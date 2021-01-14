@@ -1,11 +1,13 @@
+import {renderEntireThree} from "../render";
+
 let state = {
-    profilePage : {
+    profilePage: {
         posts: [
             {id: 1, message: 'Hi. how are you?', likesCount: 15},
             {id: 2, message: 'It\'s my first post in this messenger', likesCount: 100}
         ]
     },
-    dialogsPages : {
+    dialogsPages: {
         dialogs: [
             {id: 1, name: 'Sergei'},
             {id: 2, name: 'Dimych'},
@@ -19,8 +21,14 @@ let state = {
             {id: 4, message: 'How are you?'},
         ],
     }
+}
 
+export let addPost = (newPost) => {
 
+    let posts = state.profilePage.posts;
+    let nextId = posts.length + 1;
+    posts.push({id: nextId, message: newPost, likesCount: 0})
+    renderEntireThree(state);
 }
 
 export default state
