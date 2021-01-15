@@ -1,21 +1,23 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state, {addPost, subscribe, updateNewPostText} from "./redux/State";
+import store from "./redux/State";
 import ReactDOM from 'react-dom';
 import App from './App';
 
-export let renderEntireThree = (state) => {
+export let renderEntireThree = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+            <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
+            {/*<App state={store.getState()} addPost={store.addPost.bind(store)}
+                 updateNewPostText={store.updateNewPostText.bind(store)}/>*/}
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-renderEntireThree(state);
+renderEntireThree();
 
-subscribe(renderEntireThree);
+store.subscribe(renderEntireThree);
 
 reportWebVitals();
