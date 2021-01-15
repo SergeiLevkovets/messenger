@@ -6,11 +6,11 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.state.dialogsPages.dialogs.map(
+    let dialogsElements = props.state.dialogsPage.dialogs.map(
         d => <DialogItem name={d.name} id={d.id}/>
     )
 
-    let messagesElements = props.state.dialogsPages.messages.map(
+    let messagesElements = props.state.dialogsPage.messages.map(
         m => <Message message={m.message}/>
     )
 
@@ -33,7 +33,7 @@ const Dialogs = (props) => {
                 <div>{messagesElements}</div>
                 <div>
                     <div><textarea placeholder='enter your message'
-                                   value={props.state.dialogsPages.newMessageText}
+                                   value={props.state.dialogsPage.newMessageText}
                                    onChange={onMessageChange}/></div>
                     <div><button onClick={addMessage}>send</button></div>
                 </div>

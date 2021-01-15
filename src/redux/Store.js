@@ -10,7 +10,6 @@ let store = {
                 {id: 2, message: 'It\'s my first post in this messenger', likesCount: 100}
             ],
             newPostText: 'it-kamasutra.com'
-
         },
         dialogsPages: {
             dialogs: [
