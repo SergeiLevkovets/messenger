@@ -1,11 +1,15 @@
-import {renderEntireThree} from "../render";
+let renderEntireThree = () => {
+    console.log('State changed');
+}
 
 let state = {
     profilePage: {
         posts: [
             {id: 1, message: 'Hi. how are you?', likesCount: 15},
             {id: 2, message: 'It\'s my first post in this messenger', likesCount: 100}
-        ]
+        ],
+        newPostText: 'it-kamasutra.com'
+
     },
     dialogsPages: {
         dialogs: [
@@ -23,12 +27,21 @@ let state = {
     }
 }
 
-export let addPost = (newPost) => {
-
+export const addPost = () => {
     let posts = state.profilePage.posts;
     let nextId = posts.length + 1;
-    posts.push({id: nextId, message: newPost, likesCount: 0})
+    posts.push({id: nextId, message: state.profilePage.newPostText, likesCount: 0})
+    state.profilePage.newPostText = '';
     renderEntireThree(state);
+}
+
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    renderEntireThree(state);
+}
+
+export const subscribe = (observer) => {
+    renderEntireThree = observer;
 }
 
 export default state
