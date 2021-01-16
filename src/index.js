@@ -4,15 +4,15 @@ import reportWebVitals from './reportWebVitals';
 import store from "./redux/ReduxStore";
 import ReactDOM from 'react-dom';
 import App from './App';
-import StoreContext from "./StoreContext";
+import {Provider} from "./StoreContext";
 import {BrowserRouter} from "react-router-dom";
 
 export let renderEntireThree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <StoreContext.Provider value={store}>
+            <Provider store={store}>
                 <App />
-            </StoreContext.Provider>
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );
