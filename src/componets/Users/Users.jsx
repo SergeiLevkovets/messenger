@@ -1,35 +1,45 @@
 import React from 'react';
 import css from './Users.module.css';
+import axios from "axios";
+import userPhoto from "../../assets/userPhoto.png"
 
-const Users = (props) => {
-    return (
-        <div>
-            Users page
+class Users extends React.Component {
+
+    constructor(props) {
+        super(props);
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                this.props.setUsers(response.data.items);
+            }
+        )
+    }
+
+    render() {
+        return <div>
             {
-                props.users.map(u =>
-                    <div id={u.id}>
+                this.props.users.map(u =>
+                    <div id={u.id} className={css.users}>
                         <div>
-                            <img className={css.photo} src={u.photoUrl}/>
+                            <img className={css.photo} src={u.photos.small || userPhoto}/>
                         </div>
                         <div>
                             {u.followed
                                 ? <button onClick={() => {
-                                    props.unFollow(u.id)
+                                    this.props.unFollow(u.id)
                                 }}>Unfollow</button>
                                 : <button onClick={() => {
-                                    props.follow(u.id)
+                                    this.props.follow(u.id)
                                 }}>Follow</button>
                             }
                         </div>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>'u.location.country'</div>
+                        <div>'u.location.city'</div>
                     </div>
                 )
             }
         </div>
-    )
+    }
 }
 
 export default Users;
