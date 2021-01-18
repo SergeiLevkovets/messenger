@@ -5,3 +5,7 @@ padding: 10px
 .photo {
     height: 100px;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
