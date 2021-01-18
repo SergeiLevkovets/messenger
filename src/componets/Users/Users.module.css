@@ -5,6 +5,9 @@ padding: 10px
 .photo {
     height: 100px;
 }
+.preloader {
+    height: 200px;
+}
 
 .selectedPage {
     font-weight: bold;
