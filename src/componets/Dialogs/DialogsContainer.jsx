@@ -11,12 +11,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
+let mapDispatchToProps = {
         addMessage,
         updateNewMessageText,
         setDialogsState
-    }
 }
 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
