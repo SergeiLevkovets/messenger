@@ -5,7 +5,6 @@ import Message from "./Message/Message";
 
 const Dialogs = (props) => {
 
-debugger
     let dialogsElements = props.dialogs.map(
         d => <DialogItem name={d.name} id={d.id}/>
     )
@@ -20,7 +19,7 @@ debugger
 
     let onMessageChange = (e) => {
         let text = e.target.value;
-        props.onMessageChange(text);
+        props.updateNewMessageText(text);
     }
 
     return (
