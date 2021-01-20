@@ -2,10 +2,8 @@ import React from 'react';
 import css from './Users.module.css';
 import userPhoto from "../../assets/userPhoto.png"
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 let Users = (props) => {
-
     let pageCount = Math.ceil(props.totalCount / props.pageSize);
     let currentPage = props.currentPage;
     let pages = [];
@@ -40,20 +38,12 @@ let Users = (props) => {
                     </NavLink>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {
-                                usersAPI.unFollow(u.id).then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.unFollow(u.id)
-                                    }
-                                })
-                            }}>Unfollow</button>
-                            : <button onClick={() => {
-                                usersAPI.follow(u.id).then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.follow(u.id)
-                                    }
-                                })
-                            }}>Follow</button>
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} o
+                                      nClick={() => {props.unFollow(u.id)}}
+                            >Unfollow</button>
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                      onClick={() => {props.unFollow(u.id)}}
+                            >Follow</button>
                         }
                     </div>
                     <div>{u.name}</div>
