@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "./Header";
 import {connect} from "react-redux";
 import {authMe} from "../../redux/AuthReducer";
+import Dialogs from "../Dialogs/Dialogs";
 
 class HeaderContainer extends React.Component {
 
@@ -15,11 +16,9 @@ class HeaderContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    id: state.auth.id,
-    email: state.auth.email,
-    login: state.auth.login,
-    isAuth: state.auth.isAuth
+    id: state.authStore.id,
+    email: state.authStore.email,
+    login: state.authStore.login,
 })
-
 
 export default connect(mapStateToProps, {authMe})(HeaderContainer);
