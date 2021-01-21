@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {followAPI, usersAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -58,7 +58,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.followingInProgress
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
 
         }
@@ -94,7 +94,7 @@ export const getUsers = (currentPage, pageSize) => {
 export const follow = (userId) => {
     return (dispatch) => {
         dispatch(toggleIsFollowingProgress(true, userId));
-        usersAPI.follow(userId).then(data => {
+        followAPI.follow(userId).then(data => {
             if (data.resultCode === 0) {
                 dispatch(followSuccess(userId));
             }
@@ -106,7 +106,7 @@ export const follow = (userId) => {
 export const unFollow = (userId) => {
     return (dispatch) => {
         dispatch(toggleIsFollowingProgress(true, userId));
-        usersAPI.unFollow(userId).then(data => {
+        followAPI.unFollow(userId).then(data => {
             if (data.resultCode === 0) {
                 dispatch(unFollowSuccess(userId))
             }
