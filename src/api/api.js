@@ -32,14 +32,12 @@ export const authAPI = {
             .then(response => response.data)
     },
 
-    login(email, password, rememberMe, captcha) {
-        return instance.put(`auth/login`, {email, password, rememberMe, captcha})
-            .then(response => response.data)
+    login(email, password, rememberMe = false) {
+        return instance.put(`auth/login`, {email, password, rememberMe});
     },
 
     logout() {
-        return instance.delete(`auth/login`)
-            .then(response => response.data)
+        return instance.delete(`auth/login`);
     }
 }
 

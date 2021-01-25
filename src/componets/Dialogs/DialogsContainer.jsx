@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import Dialogs from "./Dialogs";
 import {withAuthRedirect} from "../../hoc/AuthRedirect";
 import {compose} from "redux";
-import {getUserById} from "../../redux/ProfileReducer";
 
 let mapStateToProps = (state) => {
     return {
@@ -15,7 +14,7 @@ let mapStateToProps = (state) => {
 }
 
 let mapDispatchToProps = {
-    addMessage,
+    addMessage
 }
 
 export default compose(
