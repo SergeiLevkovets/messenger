@@ -10,7 +10,6 @@ let initialState = {
         {id: 1, message: 'Hi. how are you?', likesCount: 15},
         {id: 2, message: 'It\'s my first post in this messenger', likesCount: 100}
     ],
-    newPostText: 'it-kamasutra.com',
     profile: null,
     status: ''
 }
@@ -18,18 +17,12 @@ let initialState = {
 export const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.text
-            };
-        }
+
         case ADD_POST: {
             let nextId = state.posts.length + 1;
-            let text = state.newPostText;
+            let text = action.message;
             return {
                 ...state,
-                newPostText: '',
                 posts: [...state.posts, {id: nextId, message: text, likesCount: 0}]
             };
         }
@@ -44,8 +37,7 @@ export const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text: text})
-export const addPost = () => ({type: ADD_POST})
+export const addPost = (message) => ({type: ADD_POST, message})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 
