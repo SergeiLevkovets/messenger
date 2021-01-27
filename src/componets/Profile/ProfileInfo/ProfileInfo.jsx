@@ -13,9 +13,6 @@ const ProfileInfo = (props) => {
 
         <div>
             <h4>ProfileInfo</h4>
-            {/*<div className={css.image}>
-                <img src='https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg'/>
-            </div>*/}
             <ProfileStatus storeStatus={props.storeStatus}
                            updateStatus={props.updateStatus} />
             <div className={css.descriptionBlock}>

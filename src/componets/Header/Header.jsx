@@ -3,6 +3,7 @@ import css from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
+
     return <header className={css.header}>
             <img className={css.logo} src='https://cdn.logo.com/hotlink-ok/logo-social.png'/>
             Header
@@ -18,8 +19,6 @@ const Header = (props) => {
 
             </div>
         </header>
-
-
 }
 
 export default Header;

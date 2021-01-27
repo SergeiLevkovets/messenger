@@ -3,6 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/newMessageForm/FormControl";
 import {required} from "../../utils/validators/validators";
 import {Redirect} from "react-router-dom";
+import css from "./login.module.css"
 
 const LoginForm = (props) => {
 
@@ -11,6 +12,7 @@ const LoginForm = (props) => {
             <div><Field placeholder={'email'} name={'email'} component={Input} validate={[required]}/></div>
             <div><Field placeholder={'Password'} name={'password'} component={Input} validate={[required]}/></div>
             <div><Field type={'checkbox'} name={"rememberMe"} component={Input}/></div>
+            {props.error && <div className={css.formSummaryError}>{props.error}</div>}
             <div>
                 <button>Login</button>
             </div>
