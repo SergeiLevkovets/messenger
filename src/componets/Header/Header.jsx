@@ -10,7 +10,7 @@ const Header = (props) => {
             <div className={css.loginBlock}>
                 {props.isAuth
                     ? (<div>
-                        <div>id: {props.id}</div>
+                        <div>id: {props.authUserId}</div>
                         <div>email: {props.email}</div>
                         <div>login: {props.loginName}</div>
                         <button onClick={props.logout}>Logout</button>

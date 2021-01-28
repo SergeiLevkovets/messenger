@@ -2,6 +2,7 @@ import React from 'react';
 import css from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/Preloader";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 
 
@@ -13,7 +14,7 @@ const ProfileInfo = (props) => {
 
         <div>
             <h4>ProfileInfo</h4>
-            <ProfileStatus storeStatus={props.storeStatus}
+            <ProfileStatusWithHooks storeStatus={props.storeStatus}
                            updateStatus={props.updateStatus} />
             <div className={css.descriptionBlock}>
                 <img src={props.profile.photos.large}/>

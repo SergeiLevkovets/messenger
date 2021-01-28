@@ -10,16 +10,16 @@ class DialogsC extends React.Component {
         super(props);
         this.props.setDialogsState({
             dialogs: [
-                {id: 1, name: 'Sergei'},
-                {id: 2, name: 'Dimych'},
-                {id: 3, name: 'Andrei'},
-                {id: 4, name: 'Sergei'},
+                {authUserId: 1, name: 'Sergei'},
+                {authUserId: 2, name: 'Dimych'},
+                {authUserId: 3, name: 'Andrei'},
+                {authUserId: 4, name: 'Sergei'},
             ],
             messages: [
-                {id: 1, message: 'Hello'},
-                {id: 2, message: 'Yo'},
-                {id: 3, message: 'Hi'},
-                {id: 4, message: 'How are you?'},
+                {authUserId: 1, message: 'Hello'},
+                {authUserId: 2, message: 'Yo'},
+                {authUserId: 3, message: 'Hi'},
+                {authUserId: 4, message: 'How are you?'},
             ],
             newMessageText: ''
         })
@@ -30,16 +30,16 @@ class DialogsC extends React.Component {
         debugger
         this.props.setDialogsState({
             dialogs: [
-                {id: 1, name: 'Sergei'},
-                {id: 2, name: 'Dimych'},
-                {id: 3, name: 'Andrei'},
-                {id: 4, name: 'Sergei'},
+                {authUserId: 1, name: 'Sergei'},
+                {authUserId: 2, name: 'Dimych'},
+                {authUserId: 3, name: 'Andrei'},
+                {authUserId: 4, name: 'Sergei'},
             ],
             messages: [
-                {id: 1, message: 'Hello'},
-                {id: 2, message: 'Yo'},
-                {id: 3, message: 'Hi'},
-                {id: 4, message: 'How are you?'},
+                {authUserId: 1, message: 'Hello'},
+                {authUserId: 2, message: 'Yo'},
+                {authUserId: 3, message: 'Hi'},
+                {authUserId: 4, message: 'How are you?'},
             ],
             newMessageText: ''
         })
