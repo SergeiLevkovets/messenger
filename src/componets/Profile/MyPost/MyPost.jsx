@@ -4,7 +4,7 @@ import Post from "../Post/Post";
 import {Field, reduxForm} from "redux-form";
 import AddMessageForm from "../../common/newMessageForm/AddMessageForm";
 
-const MyPost = (props) => {
+const MyPost = React.memo((props) => {
     let postsElements = props.posts.map(
         p => <Post message={p.message} like={p.likesCount}/>
     )
@@ -24,7 +24,7 @@ const MyPost = (props) => {
             </div>
         </div>
     )
-}
+})
 
 const AddMessageFormRedux = reduxForm({
     form: 'profileAddMessageForm'
