@@ -2,7 +2,7 @@ import React from 'react';
 import css from './MyPost.module.css';
 import Post from "../Post/Post";
 import {Field, reduxForm} from "redux-form";
-import AddMessageForm from "../../common/newMessageForm/AddMessageForm";
+import AddMessageForm from "../../common/formControl/AddMessageForm";
 
 const MyPost = React.memo((props) => {
     let postsElements = props.posts.map(

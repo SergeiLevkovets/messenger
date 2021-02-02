@@ -1,8 +1,6 @@
-import {authAPI} from "../api/api";
-import {stopSubmit} from "redux-form";
 import {authMe} from "./AuthReducer";
 
-const SET_INITIALIZED = 'SET_INITIALIZED';
+const SET_INITIALIZED = 'app/SET_INITIALIZED';
 
 let initialState = {
     initialized: false
@@ -25,7 +23,6 @@ export const appReducer = (state = initialState, action) => {
 export const initializedSuccess = () => ({type: SET_INITIALIZED})
 
 export const initializeApp = () => {
-
     return (dispatch) => {
         let promise = dispatch(authMe())
         promise.then(() => {

@@ -3,7 +3,7 @@ import css from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {reduxForm} from "redux-form";
-import AddMessageForm from "../common/newMessageForm/AddMessageForm";
+import AddMessageForm from "../common/formControl/AddMessageForm";
 
 const Dialogs = (props) => {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import css from './MyPost.module.css';
 import Post from "../Post/Post";
 import {reduxForm} from "redux-form";
-import AddMessageForm from "../../common/newMessageForm/AddMessageForm";
+import AddMessageForm from "../../common/formControl/AddMessageForm";
 
 class MyPost extends React.PureComponent {
 

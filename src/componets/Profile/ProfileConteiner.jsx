@@ -10,10 +10,11 @@ import {getAuthUserId} from "../../redux/AuthSelectors";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        let userId = this.props.match.params.userId;
+        const {match, authUserId} = this.props;
+        let userId = match.params.userId;
         if (!userId) {
-            if (this.props.authUserId) {
-                userId = this.props.authUserId;
+            if (authUserId) {
+                userId = authUserId;
             } else userId = 2
         }
         this.props.getUserById(userId);

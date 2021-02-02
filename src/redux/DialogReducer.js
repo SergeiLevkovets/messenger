@@ -1,4 +1,4 @@
-const ADD_MESSAGE = 'ADD_MESSAGE';
+const ADD_MESSAGE = 'dialogs/ADD_MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -18,7 +18,6 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-
         case ADD_MESSAGE: {
             let nextId = state.messages.length + 1;
             let text = action.text;
@@ -28,7 +27,6 @@ const dialogsReducer = (state = initialState, action) => {
                 messages: [...state.messages, {id: nextId, message: text}]
             };
         }
-
         default:
             return state;
     }
