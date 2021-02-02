@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from "./componets/Navbar/Navbar";
-import {Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import News from "./componets/News/News";
 import Music from "./componets/Music/Music";
 import Settings from "./componets/Settings/Settings";
@@ -10,10 +10,11 @@ import UsersContainer from "./componets/Users/UsersContainer";
 import ProfileContainer from "./componets/Profile/ProfileConteiner";
 import HeaderContainer from "./componets/Header/HeaderContainer";
 import LoginContainer from "./componets/Login/LoginContainer";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/AppReducer";
 import Preloader from "./componets/common/preloader/Preloader";
+import store from "./redux/ReduxStore";
 
 class App extends React.Component {
 
@@ -48,7 +49,19 @@ const mapStateToProps = (state) => ({
     initialized: state.appStore.initialized
 })
 
-export default compose(
+let AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp})
 )(App);
+
+const MessengerApp = (props) => {
+    return <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+}
+
+export default MessengerApp
+
+
