@@ -4,7 +4,7 @@ import User from "./User";
 import css from "css";
 
 const Users = ({
-                   currentPage, totalCount, pageSize, onPageChanged,
+                   currentPage, totalCount, pageSize, portionSize, onPageChanged,
                    users, followingInProgress, unFollow, follow
                }) => {
 
@@ -13,6 +13,7 @@ const Users = ({
                    onPageChanged={onPageChanged}
                    totalCount={totalCount}
                    pageSize={pageSize}
+                   portionSize={portionSize}
         />
         {users.map(u =>
             <User className={css.users}
