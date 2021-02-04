@@ -1,20 +1,22 @@
-import './App.css';
-import Navbar from "./componets/Navbar/Navbar";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
-import News from "./componets/News/News";
-import Music from "./componets/Music/Music";
-import Settings from "./componets/Settings/Settings";
 import React from "react";
-import DialogsContainer from "./componets/Dialogs/DialogsContainer";
-import UsersContainer from "./componets/Users/UsersContainer";
-import ProfileContainer from "./componets/Profile/ProfileConteiner";
-import HeaderContainer from "./componets/Header/HeaderContainer";
-import LoginContainer from "./componets/Login/LoginContainer";
+import './App.css';
+import store from "./redux/ReduxStore";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/AppReducer";
 import Preloader from "./componets/common/preloader/Preloader";
-import store from "./redux/ReduxStore";
+import Settings from "./componets/Settings/Settings";
+import Music from "./componets/Music/Music";
+import News from "./componets/News/News";
+import Navbar from "./componets/Navbar/Navbar";
+import HeaderContainer from "./componets/Header/HeaderContainer";
+import {withSuspense} from "./hoc/WithSuspense";
+
+const DialogsContainer = React.lazy(() => import("./componets/Dialogs/DialogsContainer"))
+const UsersContainer = React.lazy(() => import("./componets/Users/UsersContainer"))
+const ProfileContainer = React.lazy(() => import("./componets/Profile/ProfileConteiner"))
+const LoginContainer = React.lazy(() => import("./componets/Login/LoginContainer"))
 
 class App extends React.Component {
 
@@ -23,21 +25,21 @@ class App extends React.Component {
     }
 
     render() {
-        if (!this.props.initialized) {
+        /*if (!this.props.initialized) {
             return <Preloader/>
-        }
+        }*/
 
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path='/profile/:userId?'><ProfileContainer/></Route>
-                    <Route path='/dialogs'><DialogsContainer/></Route>
+                    <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
+                    <Route path='/dialogs'render={withSuspense(DialogsContainer)}/>
+                    <Route path='/users'render={withSuspense(UsersContainer)}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
-                    <Route path='/users'><UsersContainer/></Route>
-                    <Route path='/loginName'><LoginContainer/></Route>
+                    <Route path='/loginName'render={withSuspense(LoginContainer)}/>
                     <Route path='/settings' component={Settings}/>
                 </div>
             </div>
@@ -55,7 +57,7 @@ let AppContainer = compose(
 )(App);
 
 const MessengerApp = (props) => {
-    return <BrowserRouter>
+    return <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
             <AppContainer/>
         </Provider>

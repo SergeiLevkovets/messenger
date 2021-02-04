@@ -5,7 +5,7 @@ import MyPostContainer from "./MyPost/MyPostContainer";
 const Profile = (props) => {
     return (
         <div>
-            <ProfileInfo {...props}/>
+            <ProfileInfo isOwner={props.isOwner} {...props}/>
             <MyPostContainer />
         </div>
     )
