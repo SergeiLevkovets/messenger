@@ -6,16 +6,10 @@ import AddMessageForm from "../../common/formControl/AddMessageForm";
 
 class MyPost extends React.PureComponent {
 
-
-    /*
-        shouldComponentUpdate(nextProps, nextState, nextContext) {
-            return nextProps != this.props || nextState != this.state
-        }
-    */
     render() {
 
         let postsElements = this.props.posts.map(
-            p => <Post message={p.message} like={p.likesCount}/>
+            p => <Post key={p.id} message={p.message} like={p.likesCount}/>
         )
 
         let addNewMessage = (values) => {

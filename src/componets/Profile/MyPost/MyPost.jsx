@@ -6,7 +6,7 @@ import AddMessageForm from "../../common/formControl/AddMessageForm";
 
 const MyPost = React.memo((props) => {
     let postsElements = props.posts.map(
-        p => <Post message={p.message} like={p.likesCount}/>
+        p => <Post key={p.id} message={p.message} like={p.likesCount}/>
     )
 
     let addNewMessage = (values) => {

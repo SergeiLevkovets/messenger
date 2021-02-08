@@ -8,5 +8,14 @@
 
 .mainFoto {
     max-height: 300px;
+}
 
+.contacts {
+    padding-left: 20px;
+}
+
+.formSummaryError {
+    border: red 1px solid;
+    padding: 5px;
+    color: red;
 }
